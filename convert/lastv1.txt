@@ -1,0 +1,8 @@
+﻿Gui Add, Button, x40 y24 w80 h23, &OK
+
+Gui Show, w620 h420, Window
+Return
+
+GuiEscape:
+GuiClose:
+    ExitApp
