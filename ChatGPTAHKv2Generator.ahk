@@ -8,7 +8,7 @@
 ; - Credit to the creator of AHK-v2-script-converter: https://github.com/mmikeww/AHK-v2-script-converter
 
 ; === Global Variables ===
-API_Key := "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"
+API_Key := "sk-"
 API_Model := "gpt-3.5-turbo"
 ChatGPT_Prompt := "Write an AutoHotkey script with verbose and complete class-based and static methods based on the request's parameters."
 
