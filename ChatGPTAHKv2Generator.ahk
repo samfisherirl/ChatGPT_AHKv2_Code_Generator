@@ -12,8 +12,11 @@ API_Key := "sk-"
 API_Model := "gpt-3.5-turbo"
 ChatGPT_Prompt := "Write an AutoHotkey script with verbose and complete class-based and static methods based on the request's parameters."
 
-; === Entry Point ===
-FileAppend(ChatGPT() "`n`n`n`n", "ChatGPT.txt")
+; === Examples ===
+; Msgbox (ChatGPT()) ; provides input box for user
+
+; Msgbox (ChatGPT("this request is made via params")) 
+
 
 ; === Function: ChatGPT ===
 ; Description: This function interacts with the OpenAI GPT-3.5 model to generate an AutoHotkey script based on a user request.
