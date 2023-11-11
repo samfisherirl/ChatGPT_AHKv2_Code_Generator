@@ -25,3 +25,78 @@ ChatGPT_Prompt := "Write an AutoHotkey script with verbose and complete class-ba
 
 ```
 
+# Test cases
+
+### Prompt "write a winhttp request then comobject strip all html"
+
+Response 1:
+
+```ahk
+ahk
+; Import required libraries
+#Include "<WinHttp.ahk>"
+
+; Create a class for handling the HTTP request
+class HttpRequest {
+    static StripHtml(url) {
+        ; Send a GET request to the specified URL
+        whr := ComObject("WinHttp.WinHttpRequest.5.1")
+        whr.Open("GET", url)
+        whr.Send()
+
+        ; Retrieve the response text
+        response := whr.ResponseText
+
+        ; Strip HTML tags using regular expressions
+        regex := "<[^>]*>"
+        return RegExReplace(response, regex, "")
+    }
+}
+
+; Example usage
+url := "http://example.com"
+response := HttpRequest.StripHtml(url)
+MsgBox(response)
+ ```
+
+Response 2:
+
+```ahk
+; Include the AHK HTTP library
+#Include "Http.ahk"
+
+class Request
+{
+    static GetResponse(url)
+    {
+        HttpObj := ComObject("WinHttp.WinHttpRequest.5.1")
+        HttpObj.Open("GET", url)
+        HttpObj.Send()
+        return HttpObj.ResponseText
+    }
+}
+
+class HtmlStripper
+{
+    static StripHTML(html)
+    {
+        oRegEx := ComObject("VBScript.RegExp")
+        oRegEx.Pattern := "<[^>]+>"
+        oRegEx.Global := true
+        return oRegEx.Replace(html, "")
+    }
+}
+
+; Usage example
+url := "https://www.example.com"
+response := Request.GetResponse(url)
+strippedText := HtmlStripper.StripHTML(response)
+MsgBox(strippedText)
+
+
+Sources:
+- AHK HTTP library: http://www.autohotkey.net/~tank/Day-Download/FileDownload24/include/HTTP.ahk
+- WinHttpRequest COM object: https://docs.microsoft.com/en-us/windows/win32/winhttp/winhttprequest-and-ssl
+- VBScript.RegExp COM object: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/scripting-articles/ms974570(v=msdn.10)?redirectedfrom=MSDN```
+
+
